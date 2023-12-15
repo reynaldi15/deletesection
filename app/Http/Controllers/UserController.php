@@ -8,15 +8,18 @@ class UserController extends Controller
 {
     public function index(){
         $users=User::all();
-        return view('welcome',compact('users'));
+        return view('dashboard',compact('users'));
     }
     public function softDelete($id){
         User::find($id)->delete();
-        return back();
+        // return back();
+        // $title = 'Delete Data!';
+        // $text = "Are you sure you want to delete?";
+        return redirect()->back()->withSuccess('User data in the Recycle Bin!');
     }
     public function forceDelete($id){
         User::find($id)->forceDelete();
-        return back();
+        return redirect()->back()->withSuccess('You Delete Permanent User!');
     }
     public function trashed(){
         $users=User::onlyTrashed()->get();
@@ -24,11 +27,14 @@ class UserController extends Controller
     }
     public function restore($id){
         User::whereId($id)->restore();
-        return back();
+      
+        return redirect()->back()->withSuccess('Nunga Mulak Ibana!');
     }
     public function restoreall(){
         User::onlyTrashed()->restore();
-        return back();
+        // return back();
+        //  session()->flash('message', 'Post successfully updated.');
+        return redirect()->back()->withSuccess('You Have Been Restore the User!');
     }
 
 }

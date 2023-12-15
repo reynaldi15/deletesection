@@ -1,16 +1,14 @@
 @extends('main')
 
-@section('title','Archive User')
-
+@section('title','List User')
 @section('data')
-    <h3><a href="/restore-all" class="btn btn-success"><i class="fa fa-sharp fa-solid fa-trash-arrow-up"></i>Restore All</a></h3>
-    <table id="example" class="table table-bordered table-hover display">
 <thead>
     <tr>
         <th scope="col">ID</th>
         <th scope="col">Goar</th>
         <th scope="col">Email</th>
-        <th scope="col">Dipaulak</th>
+        <th scope="col">Soft Delete</th>
+        <th scope="col">Force Delete</th>
     </tr>
 </thead>
 <tbody>
@@ -19,13 +17,14 @@
             <th scope="row">{{ $user->id }}</th>
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
-            <td><a href="restore/{{ $user->id }}" class="text-warning btn"><i class="fa fa-sharp fa-solid fa-trash-arrow-up"></i></a></td>
+            <td><a href="softDelete/{{ $user->id }}" class="text-warning btn"><i class="fa fa-solid fa-trash"></i>Delete</a></td>
+            <td><a href="forceDelete/{{ $user->id }}" class="text-danger btn" onclick="return confirm('Are You Sure to Delete Permanent?')"><i class="fa fa-solid fa-trash"></i>Force</a></td>
         </tr>
     @endforeach
-</tbody>
-@if (session('success'))
+    @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
 @endif
+</tbody>
 @endsection

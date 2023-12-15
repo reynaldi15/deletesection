@@ -11,42 +11,25 @@
 </head>
   <body>
     <div class="container">
-        <h1 class="text-center text-success pt-4">Learn how to make and use the Soft Delete|| Force Delete|| Restore</h1>
+        <h1 class="text-center text-success pt-4 ">Learn how to make and use the <a href="https://laravel.com/docs/8.x/scout#soft-deleting" class="text-decoration-none"><i class="text-warning">Soft Delete</i></a>  , <i class="text-danger">Force Delete</i> and  Restore</h1>
         <hr>
         <div class="row py-2">
             <div class="col-md-6">
-                <h2>List Users</h2>
+                <h2>@yield('title')</h2>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <a href="/" class="btn btn-default m-2 text-gelap"><i class="fa-solid fa-user fa-beat"></i></i> List User</a>
-                    <a href="trashed" class="btn btn-default m-2 text-info"><i class="fa-solid fa-user-slash fa-spin"></i> Archive User</a>
+                    <a href="trashed" class="btn btn-default m-2 text-info"><i class="fa-solid fa-user-slash fa-spin"></i> Recycle Bin</a>
                 </div>
             </div>
         </div>
         <table id="example" class="table table-bordered table-hover display">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Goar</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Soft Delete</th>
-                    <th scope="col">Force Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($users as $user)
-                    <tr>
-                        <th scope="row">{{ $user->id }}</th>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td><a href="softDelete/{{ $user->id }}" class="text-warning btn"><i class="fa fa-solid fa-trash"></i>Delete</a></td>
-                        <td><a href="forceDelete/{{ $user->id }}" class="text-danger btn"><i class="fa fa-solid fa-trash"></i>Force</a></td>
-                    </tr>
-                @endforeach
-            </tbody>
+            @yield('data')
         </table>
     </div>
+
+    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
